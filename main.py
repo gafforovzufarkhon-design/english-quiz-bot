@@ -25,7 +25,8 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from config import BOT_TOKEN
+import os
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 from database import db, get_user_by_id, save_user_by_id
 from questions import get_questions, get_total_levels, get_level_range
 from translations import (
