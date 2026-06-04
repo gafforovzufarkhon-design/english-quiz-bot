@@ -852,7 +852,6 @@ async def cmd_start(message: types.Message):
     await message.answer(
         text=welcome_text,
         reply_markup=create_main_keyboard(),
-        parse_mode="Markdown"
     )
 
 
@@ -899,7 +898,6 @@ async def send_placement_question(user_id: int):
         chat_id=user_id,
         text=question_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -966,7 +964,6 @@ async def finish_placement_test(user_id: int):
         chat_id=user_id,
         text=welcome_text,
         reply_markup=create_main_keyboard(),
-        parse_mode="Markdown"
     )
 
 
@@ -1042,7 +1039,6 @@ async def process_back_to_menu(callback: types.CallbackQuery):
     await callback.message.edit_text(
         text=welcome_text,
         reply_markup=create_main_keyboard(),
-        parse_mode="Markdown"
     )
 
 
@@ -1080,7 +1076,6 @@ async def process_select_level(callback: types.CallbackQuery):
     await callback.message.edit_text(
         text=text,
         reply_markup=create_level_page_keyboard(page),
-        parse_mode="Markdown"
     )
 
 
@@ -1126,7 +1121,6 @@ async def process_start_level(callback: types.CallbackQuery):
              f"📝 {len(questions)} вопросов\n\n"
              f"Выберите действие:",
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -1210,7 +1204,6 @@ async def process_my_progress(callback: types.CallbackQuery):
 
     await callback.message.answer(
         text=progress_text,
-        parse_mode="Markdown"
     )
 
 
@@ -1239,7 +1232,6 @@ async def process_rankings(callback: types.CallbackQuery):
 
     await callback.message.answer(
         text=rankings_text,
-        parse_mode="Markdown"
     )
 
 
@@ -1294,7 +1286,6 @@ async def process_league_standings(callback: types.CallbackQuery):
     await callback.message.answer(
         text=standings_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -1347,7 +1338,6 @@ async def process_friends_menu(callback: types.CallbackQuery):
     await callback.message.answer(
         text=friends_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -1360,7 +1350,6 @@ async def process_add_friend(callback: types.CallbackQuery):
         "`/addfriend <user_id>`\n\n"
         "Вы можете узнать свой ID командой `/myid`.\n\n"
         "Пример: `/addfriend 123456789`",
-        parse_mode="Markdown"
     )
 
 
@@ -1370,7 +1359,6 @@ async def cmd_myid(message: types.Message):
     await message.answer(
         f"📋 **Ваш User ID:** `{message.from_user.id}`\n\n"
         "Поделитесь этим ID с друзьями, чтобы они могли вас добавить!",
-        parse_mode="Markdown"
     )
 
 
@@ -1381,7 +1369,6 @@ async def cmd_add_friend(message: types.Message):
     args = message.text.split()
 
     if len(args) < 2:
-        await message.answer("❌ Пожалуйста, укажите ID пользователя. Использование: `/addfriend <user_id>`", parse_mode="Markdown")
         return
 
     try:
@@ -1431,7 +1418,6 @@ async def cmd_accept_friend(message: types.Message):
     args = message.text.split()
 
     if len(args) < 2:
-        await message.answer("❌ Пожалуйста, укажите ID пользователя. Использование: `/acceptfriend <user_id>`", parse_mode="Markdown")
         return
 
     try:
@@ -1502,7 +1488,6 @@ async def process_support_friend(callback: types.CallbackQuery):
     await callback.message.answer(
         text=f"💝 **Поддержать друга**\n\nВыберите друга, чтобы отправить {SUPPORT_HEARTS_AMOUNT} сердце.\nУ вас {current_hearts} сердечек.",
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -1641,7 +1626,6 @@ async def process_hearts_info(callback: types.CallbackQuery):
     await callback.message.answer(
         text=hearts_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -1675,7 +1659,6 @@ async def cmd_decay_info(message: types.Message):
             f"Продолжайте играть, чтобы сохранить уровень!"
         )
 
-    await message.answer(status_text, parse_mode="Markdown")
 
 
 @dp.callback_query(F.data.startswith("answer_"))
@@ -1786,7 +1769,6 @@ async def process_restart(callback: types.CallbackQuery):
     await callback.message.edit_text(
         text=welcome_text,
         reply_markup=create_main_keyboard(),
-        parse_mode="Markdown"
     )
 
 
@@ -1822,7 +1804,6 @@ async def cmd_language(message: types.Message):
     await message.answer(
         text=text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -1872,7 +1853,6 @@ async def cmd_translate(message: types.Message):
             "`/translate hello world`\n"
             "`/translate tj thank you`\n"
             "`/translate ru good morning`",
-            parse_mode="Markdown"
         )
         return
     
@@ -1902,7 +1882,6 @@ async def cmd_translate(message: types.Message):
             f"📝 **Тарҷума / Перевод**\n\n"
             f"🇬🇧 {text_to_translate}\n\n"
             f"{lang_label} {translation}",
-            parse_mode="Markdown"
         )
     else:
         await message.answer(
@@ -2088,7 +2067,6 @@ async def process_vocabulary_mode(callback: types.CallbackQuery):
     await callback.message.answer(
         text=vocab_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2131,7 +2109,6 @@ async def process_vocab_select_level(callback: types.CallbackQuery):
     await callback.message.edit_text(
         text=text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2173,7 +2150,6 @@ async def process_vocab_start_level(callback: types.CallbackQuery):
              f"📝 {len(words)} слов для перевода\n\n"
              f"Выберите действие:",
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2236,7 +2212,6 @@ async def send_vocab_question(user_id: int):
     await bot.send_message(
         chat_id=user_id,
         text=question_text,
-        parse_mode="Markdown"
     )
 
 
@@ -2294,7 +2269,6 @@ async def finish_vocab_quiz(user_id: int):
         chat_id=user_id,
         text=result_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2359,7 +2333,6 @@ async def handle_vocab_answer(message: types.Message):
     
     await message.answer(
         text=result_text,
-        parse_mode="Markdown"
     )
     
     await asyncio.sleep(1.5)
@@ -2413,7 +2386,6 @@ async def process_vocab_learn_mode(callback: types.CallbackQuery):
     await callback.message.edit_text(
         text=learn_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2442,7 +2414,6 @@ async def process_book_mode(callback: types.CallbackQuery):
     await callback.message.answer(
         text=book_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2486,7 +2457,6 @@ async def process_book_select_page(callback: types.CallbackQuery):
     await callback.message.edit_text(
         text=text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2525,7 +2495,6 @@ async def process_book_view_page(callback: types.CallbackQuery):
             photo=photo,
             caption=f"📕 **Страница {page} из {TOTAL_BOOK_PAGES}**\n\nВыберите режим практики:",
             reply_markup=builder.as_markup(),
-            parse_mode="Markdown"
         )
         await callback.answer(f"✅ Страница {page} показана!", show_alert=False)
     except Exception as e:
@@ -2576,7 +2545,6 @@ async def process_book_mini_dialogue(callback: types.CallbackQuery):
     await callback.message.answer(
         text=dialogue_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2622,7 +2590,6 @@ async def process_book_quick_practice(callback: types.CallbackQuery):
     await callback.message.answer(
         text=practice_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2646,7 +2613,6 @@ async def process_book_skip_dialogue(callback: types.CallbackQuery):
         
         await callback.message.answer(
             text=f"⏭️ Пропущено.\n\n✅ Правильный ответ:\n{expected_answer}",
-            parse_mode="Markdown"
         )
         
         dialogue_state["current_index"] += 1
@@ -2688,7 +2654,6 @@ async def process_book_skip_practice(callback: types.CallbackQuery):
         
         await callback.message.answer(
             text=f"⏭️ Пропущено.\n\n✅ Правильный ответ:\n{correct_answer}",
-            parse_mode="Markdown"
         )
         
         practice_state["current_index"] += 1
@@ -2735,7 +2700,6 @@ async def send_next_practice_question(user_id: int):
         chat_id=user_id,
         text=practice_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2770,7 +2734,6 @@ async def send_next_dialogue_question(user_id: int):
         chat_id=user_id,
         text=dialogue_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2809,7 +2772,6 @@ async def finish_book_dialogue(user_id: int):
         chat_id=user_id,
         text=result_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2856,7 +2818,6 @@ async def handle_book_dialogue_answer(message: types.Message):
     
     await message.answer(
         text=result_text,
-        parse_mode="Markdown"
     )
     
     await asyncio.sleep(1.5)
@@ -2913,7 +2874,6 @@ async def finish_book_practice(user_id: int):
         chat_id=user_id,
         text=result_text,
         reply_markup=builder.as_markup(),
-        parse_mode="Markdown"
     )
 
 
@@ -2976,7 +2936,6 @@ async def handle_book_practice_answer(message: types.Message):
     
     await message.answer(
         text=result_text,
-        parse_mode="Markdown"
     )
     
     await asyncio.sleep(1.5)
